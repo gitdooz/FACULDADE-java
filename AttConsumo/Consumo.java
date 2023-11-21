@@ -45,8 +45,12 @@ public class Consumo {
 				this.valorConta = valorConsumo - 3;
 			}
 			else {
-				this.valorConsumo = valorConsumo - 5;
+				this.valorConta = valorConsumo - 5;
 			}
+		}
+		
+		if(this.tipoCliente == 'P') {
+			this.valorConta = valorConsumo;
 		}
 	}
 
@@ -76,13 +80,12 @@ public class Consumo {
 
 	@Override
 	public String toString() {
-		return "Consumo [idConsumo=" + idConsumo + ", data=" + data + ", tipoConsumo=" + tipoConsumo + ", tipoCliente="
-				+ tipoCliente + ", valorConsumo=" + valorConsumo + ", valorConta=" + valorConta + "]";
+		return "\nConsumo:" +
+				"\nID do Consumo:"+ idConsumo + 
+				"\nData: " + data + 
+				"\nTipo de Consumo: " + tipoConsumo +
+				"\nTipo de Cliente: " + tipoCliente + 
+				"\nValor de Consumo: " + valorConsumo + 
+				"\nValor da Conta=" + valorConta;
 	}
-	
-	
-	
-	
-	
-	
 }
