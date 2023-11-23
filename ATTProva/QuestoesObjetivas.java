@@ -1,6 +1,6 @@
 package questoes;
 
-public abstract class QuestoesObjetivas implements IQuestoes{
+public abstract class QuestaoObjetiva implements IQuestoes{
 	private static int ultimaQuestao = 0;
 
 	private int idQuestao;
@@ -11,7 +11,7 @@ public abstract class QuestoesObjetivas implements IQuestoes{
 	private double pontoMatriz;
 	protected double pontosObtidos;
 	
-	public QuestoesObjetivas(int idQuestao, String enunciado, String alternativaA, 
+	public QuestaoObjetiva(int idQuestao, String enunciado, String alternativaA, 
 			String alternativaB,String alternativaC, double pontoMatriz, double pontosObtidos){
 
 		this.idQuestao = ultimaQuestao ++;
@@ -28,7 +28,7 @@ public abstract class QuestoesObjetivas implements IQuestoes{
 	}
 
 	public static void setUltimaQuestao(int ultimaQuestao) {
-		QuestoesObjetivas.ultimaQuestao = ultimaQuestao;
+		QuestaoObjetiva.ultimaQuestao = ultimaQuestao;
 	}
 
 	public String getEnunciado() {
