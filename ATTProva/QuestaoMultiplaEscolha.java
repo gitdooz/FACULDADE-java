@@ -1,39 +1,42 @@
-package questoes;
+package AttMe;
 
-public class QuestaoMultiplaEscolha extends QuestoesObjetivas {
+public class QuestaoMultiplaEscolha extends QuestaoObjetiva {
+	private static int ultimaQuestao = 0;
 	private char alternativaCorreta;
 	private char alternativaMarcada;
 	
-	public QuestaoMultiplaEscolha(int idQuestao, String enunciado, String alternativaA, String alternativaB, String alternativaC,double pontosMatriz, char alternativaCorreta) 
-	{ super(idQuestao, enunciado, alternativaA, alternativaB, alternativaC, pontosMatriz, pontosMatriz);
+	public QuestaoMultiplaEscolha(String enunciado, String alternativaA, String alternativaB, String alternativaC, double pontosMatriz, char alternativaCorreta){ 
+		super(++ultimaQuestao, enunciado, alternativaA, alternativaB, alternativaC, pontosMatriz);
 	
-	this.alternativaCorreta = alternativaMarcada;
+		this.alternativaCorreta = alternativaCorreta;
 	}
-
+	
 	 public void marcarAlternativa(char alternativaMarcada) {
-	        this.alternativaMarcada = alternativaMarcada;
-	        super.pontosObtidos = calcularPontosObtidos();
-	    }
+		 this.alternativaMarcada = alternativaMarcada;
+	        super.pontosObtidos = calculaPontosObtidos();
+	 }
 	 
 
-	public double calcularPontosObtidos() {
+	public double calculaPontosObtidos() {
 		if (alternativaMarcada == alternativaCorreta) {
-            return super.getPontoMatriz();
-        } else {
-            return 0;
-        }
+			return super.getPontoMatriz();
+		} 
+		
+		else{
+			return 0;
+		}
 	}
 
 	public char getAlternativaCorreta() {
-        return alternativaCorreta;
-    }
+		return alternativaCorreta;
+	}
 
 	
-    public void setAlternativaCorreta(char alternativaCorreta) {
+	public void setAlternativaCorreta(char alternativaCorreta) {
 		this.alternativaCorreta = alternativaCorreta;
 	}
 
 	public char getAlternativaMarcada() {
-        return alternativaMarcada;
-    }
+		return alternativaMarcada;
+	}
 }
