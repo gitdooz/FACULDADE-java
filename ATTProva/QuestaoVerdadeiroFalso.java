@@ -1,26 +1,73 @@
-package questoes;
+package AttMe;
 
-public class QuestaoVerdadeiroFalso extends QuestoesObjetivas {
-
-
+public class QuestaoVerdadeiroFalso extends QuestaoObjetiva {
+	private static int ultimaQuestao = 0;
+	
 	private char alternativaCorretaA;
 	private char alternativaCorretaB;
 	private char alternativaCorretaC;
 	private char alternativaMarcadaA;
 	private char alternativaMarcadaB;
 	private char alternativaMarcadaC;
-	
-	public QuestaoVerdadeiroFalso(int idQuestao, String enunciado, String alternativaA, String alternativaB,
-			String alternativaC, double pontoMatriz, double pontosObtidos) {
-		super(idQuestao, enunciado, alternativaA, alternativaB, alternativaC, pontoMatriz, pontosObtidos);
-	
+
+	public QuestaoVerdadeiroFalso(String enunciado, String alternativaA, String alternativaB,
+			String alternativaC, char alternativaCorretaA, 
+			char alternativaCorretaB, char alternativaCorretaC, double pontoMatriz) {
+		super(++ultimaQuestao, enunciado, alternativaA, alternativaB, alternativaC, pontoMatriz);
+
+		this.alternativaCorretaA = alternativaCorretaA;
+		this.alternativaCorretaB = alternativaCorretaB;
+		this.alternativaCorretaC = alternativaCorretaC;
 	}
+
+	public void marcarAlternativa(char alternativa,char respostaMarcada) {
+		try {
+			if(alternativa == 'A') {
+				this.alternativaMarcadaA = respostaMarcada;
+			} 
+
+			else if(alternativa == 'B') {
+				this.alternativaMarcadaB = respostaMarcada;
+			}
+
+			else if(alternativa == 'C') {
+				this.alternativaMarcadaC = respostaMarcada;
+			}
+			
+			else {
+				throw new Exception("Nasdasjodjasodasodjsa");
+			}
+
+			super.pontosObtidos = calculaPontosObtidos();
+
+		}
+		
+		catch (Exception ex){
+			System.out.println("Erro :" + ex.getMessage());
+		}
+
+	}
+
 	@Override
-	public double calcularPontosObtidos() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculaPontosObtidos() {
+		int erros = 0;
+
+		if(alternativaMarcadaA != alternativaCorretaA){
+			erros ++;
+		}
+
+		if(alternativaMarcadaB != alternativaCorretaB){
+
+			erros ++;
+		}
+
+		if(alternativaMarcadaC != alternativaCorretaC){
+			erros ++;
+		}
+
+		return super.getPontoMatriz() / (erros +1);
 	}
-	
+
 	public char getAlternativaCorretaA() {
 		return alternativaCorretaA;
 	}
@@ -32,11 +79,11 @@ public class QuestaoVerdadeiroFalso extends QuestoesObjetivas {
 	public char getAlternativaCorretaB() {
 		return alternativaCorretaB;
 	}
-
+	
 	public void setAlternativaCorretaB(char alternativaCorretaB) {
 		this.alternativaCorretaB = alternativaCorretaB;
 	}
-
+	
 	public char getAlternativaCorretaC() {
 		return alternativaCorretaC;
 	}
@@ -56,4 +103,6 @@ public class QuestaoVerdadeiroFalso extends QuestoesObjetivas {
 	public char getAlternativaMarcadaC() {
 		return alternativaMarcadaC;
 	}
+
 }
+
