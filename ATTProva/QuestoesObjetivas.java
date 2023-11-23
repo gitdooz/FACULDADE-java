@@ -1,8 +1,7 @@
-package questoes;
+package AttMe;
 
-public abstract class QuestaoObjetiva implements IQuestoes{
-	private static int ultimaQuestao = 0;
-
+public abstract class QuestaoObjetiva implements IQuestao {
+	
 	private int idQuestao;
 	private String enunciado;
 	private String alternativaA;
@@ -11,24 +10,22 @@ public abstract class QuestaoObjetiva implements IQuestoes{
 	private double pontoMatriz;
 	protected double pontosObtidos;
 	
-	public QuestaoObjetiva(int idQuestao, String enunciado, String alternativaA, 
-			String alternativaB,String alternativaC, double pontoMatriz, double pontosObtidos){
+	public QuestaoObjetiva(int idQuestao, String enunciado, String alternativaA, String alternativaB,String alternativaC, double pontoMatriz){
 
-		this.idQuestao = ultimaQuestao ++;
+		this.idQuestao = idQuestao;
 		this.enunciado = enunciado;
 		this.alternativaA = alternativaA;
 		this.alternativaB = alternativaB;
 		this.alternativaC = alternativaC;
 		this.pontoMatriz = pontoMatriz;
-		this.pontosObtidos = pontosObtidos;
-	}
-	
-    public static int getUltimaQuestao() {
-		return ultimaQuestao;
 	}
 
-	public static void setUltimaQuestao(int ultimaQuestao) {
-		QuestaoObjetiva.ultimaQuestao = ultimaQuestao;
+	public int getIdQuestao() {
+		return idQuestao;
+	}
+
+	public void setIdQuestao(int idQuestao) {
+		this.idQuestao = idQuestao;
 	}
 
 	public String getEnunciado() {
@@ -71,13 +68,13 @@ public abstract class QuestaoObjetiva implements IQuestoes{
 		this.pontoMatriz = pontoMatriz;
 	}
 
-	public int getIdQuestao() {
-		return idQuestao;
+	public double getPontosObtidos() {
+		return pontosObtidos;
 	}
 
-	public double getPontosObtidos() {
-        return pontosObtidos;
-    }
-
+	public void setPontosObtidos(double pontosObtidos) {
+		this.pontosObtidos = pontosObtidos;
+	}
+	
 	
 }
